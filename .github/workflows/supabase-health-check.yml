@@ -1,4 +1,4 @@
-name: health check
+name: supabase health check
 
 on:
   workflow_dispatch:
