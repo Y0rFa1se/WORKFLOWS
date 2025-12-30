@@ -1,0 +1,16 @@
+name: health check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 */2 * *"
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    environment: supabase
+    steps:
+      - name: Send API Request
+        run: |
+          curl -i -X GET https://{{ secrets.PROJECT_ID }}.supabase.co/auth/v1/health \
+          -H "apikey: ${{ secrets.PUB_KEY }}"
